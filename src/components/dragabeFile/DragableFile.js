@@ -14,10 +14,14 @@ const DragableFile = () => {
         console.log("fileDrag->" ,fileDrag)
     } , fileDrag)
 
+    const getFileToIUnput = (file) => {
+
+    }
+
     return (
     <div style={{width : "100%" , heigth : "100%" , display: "flex", flexDirection: "column"}}>
         <div className='DragableFile-parent'>
-            <input type={"file"} className=""></input>
+            <input type={"file"} className="" onChange={getFileToIUnput}></input>
             {fileDrag}<p>ARASTRA TUS ARCHIVOS AQUÍ</p>
         </div>
         <button className='DragableFile-button'>

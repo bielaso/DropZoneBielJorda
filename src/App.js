@@ -12,12 +12,15 @@ import './App.css';
 
 //components
 import Home from "../src/pages/home/Home"
+import GoogleLogin from '../src/pages/googleLogin/GoogleLogin';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={<Home/>}/>
+        <Route exact path="/GoogleLogin" element={<GoogleLogin/>}/>
+
         {/* <Route exact path="/" element={<Error404/>}/> */}
       </Routes>
     </Router>
