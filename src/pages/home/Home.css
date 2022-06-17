@@ -41,15 +41,20 @@
     margin-top: 47px;
     width: 100%;
     padding:  0 19px;
-    background: #130F26;
+    background-color:  #130F26 !important;
+    border: 1px solid #FFFFFF !important;
+    color: #FFFFFF !important;
     border: 1px solid #FFFFFF;
-    border-radius: 5px;
+    border-radius: 5px !important;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     transition: all 0.5s;
     cursor: pointer;
     position: relative;
+}
+.Home-displayText-button div {
+    background-color:  #130F26 !important;
 }
 
 .Home-displayText-button:hover {
