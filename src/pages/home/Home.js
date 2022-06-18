@@ -1,15 +1,11 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect , useState }  from 'react';
 import "./Home.css";
 // components
 import DragableFile from '../../components/dragabeFile/DragableFile';
+import ButtonLogin from '../../components/ButtonLogin/ButtonLogin';
 
-//images
-import googeIconImg from "../../sources/googleIcon.webp"
-
-
-//provider
-import { googleProvider } from '../../configs/authMethod';
-import socialmediaAuth from '../../services/auth';
+//hooks
+import UseUserGoogle from '../../hooks/UseUserGoogle';
 
 //idClient:
 //1037349674357-hldgpv9bp42g1edgn3uidc69qpmosikc.apps.googleusercontent.com
@@ -20,15 +16,19 @@ import socialmediaAuth from '../../services/auth';
 const Home = () => {
 
 
-    const onClickLogin = async() => {
-        const loginRespons = await socialmediaAuth(googleProvider);
-        console.log("loginResponse ->" , loginRespons)
-    }
+    const {isLogged , userGoogle} =  UseUserGoogle();
+
+    useEffect(()=> {
+        console.log("userGoogle->" , userGoogle)
+    } , [userGoogle]);
 
   return (
     <div className='Home-parent'>
+
         <DragableFile />
+
         <div className='Home-displayText'>
+
             <div className='Home-displayText-title'>
                 <h3>Bienvenido a DDrop</h3>
                 <p>
@@ -37,13 +37,8 @@ const Home = () => {
                 </p>
             </div>
 
-            <button className='Home-displayText-button' onClick={onClickLogin}>
-                <img src={googeIconImg}></img>
-                <p>Login con Google</p>
-            </button>
+            <ButtonLogin />
 
-            
-            
         </div>
     </div>
   )

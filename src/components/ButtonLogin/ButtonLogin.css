@@ -1,0 +1,38 @@
+.Home-displayText-button {
+    margin-top: 47px;
+    width: 100%;
+    padding:  0 19px;
+    background-color:  #130F26 !important;
+    border: 1px solid #FFFFFF !important;
+    color: #FFFFFF !important;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.5s;
+    cursor: pointer;
+    position: relative;
+}
+.Home-displayText-button div {
+    background-color:  #130F26 !important;
+}
+
+.Home-displayText-button:hover {
+    transform: scale(1.05);
+}
+
+.Home-displayText-button img {
+    width: 34px;
+    height: auto;
+    object-fit: contain;
+}
+
+.Home-displayText-button p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: white;
+    margin-left: 70px;
+}

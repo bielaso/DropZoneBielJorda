@@ -11,7 +11,9 @@ import './App.css';
 //components
 import Home from "../src/pages/home/Home"
 import GoogleLogin from '../src/pages/googleLogin/GoogleLogin';
-import { useEffect } from 'react';
+
+//context
+import { UserContextProvider } from './context/userGoogleContext';
 
 function App() {
 
@@ -25,11 +27,14 @@ function App() {
 
   return (
     <Router>
-      
-      <Routes>
-        <Route exact path="/" element={<Home/>}/>
+      <UserContextProvider>
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
 
-      </Routes>
+        </Routes>
+      </UserContextProvider>
+      
+      
     </Router>
     // <Home />
   );

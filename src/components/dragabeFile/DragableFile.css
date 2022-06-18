@@ -9,11 +9,13 @@
     background-image: url("../../sources/backgroundDragable.webp");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all 0.3s;
 }
 
 .DragableFile-parent input {
@@ -30,9 +32,11 @@
     line-height: 16px;
     letter-spacing: 0.4px;
     color: #FFFFFF;
+    text-align: center;
 }
 
 .DragableFile-button {
+    
     margin-top: 95px;
     height: 56px;
     min-height: 56px;

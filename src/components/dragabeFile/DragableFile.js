@@ -1,8 +1,9 @@
-import React , {useEffect , useState , useRef} from 'react';
+import React , {useEffect , useState , useRef , createRef} from 'react';
 import "./DragableFile.css";
 
-//images
-import backgroundDragableImg from "../../sources/backgroundDragable.webp"
+//hooks
+import UseUserGoogle from '../../hooks/UseUserGoogle';
+
 
 // backgroundDragable.webp
 
@@ -10,31 +11,29 @@ const DragableFile = () => {
 
     const [fileDrag , setFileDrag] = useState(null);
 
-    const [isDragOver , setIsDragOver] = useState(false)
+    const [isDragOver , setIsDragOver] = useState(false);
 
-    const refDragable = useRef(null)
+    const {isLogged} = UseUserGoogle()
+
 
     useEffect(() => {
-        
-        refDragable.current.addEventListener('dragleave', setIsDragOver(false));
-        refDragable.current.addEventListener('dragenter', setIsDragOver(true));
-      
-        return () => {
-            refDragable.current.addEventListener('dragleave', setIsDragOver(false));
-            refDragable.current.addEventListener('dragenter', setIsDragOver(true));
-        };
+        const drafFileId = document.getElementById("dragFileId");
+
+        drafFileId.addEventListener("dragover", function () {
+            setIsDragOver(true)
+        });
+
+        drafFileId.addEventListener("dragleave", function () {
+            setIsDragOver(false)
+         });
       }, []);
 
+      
+    const getFileToIUnput = (event) => {
 
-      useEffect(()=> {
-        console.log("isDragOver->" ,isDragOver)
-    } , [isDragOver])
-
-    useEffect(()=> {
-        console.log("fileDrag->" ,fileDrag)
-    } , [fileDrag])
-
-    const getFileToIUnput = async(event) => {
+        if(event.target.files[0] == null) {
+            return;
+        }
         
         const file = event.target.files[0];
 
@@ -54,11 +53,24 @@ const DragableFile = () => {
 
     return (
     <div style={{width : "100%" , heigth : "100%" , display: "flex", flexDirection: "column"}}>
-        <div className='DragableFile-parent'>
-            <input ref={refDragable} type={"file"} className="" onChange={getFileToIUnput}></input>
-            <p>ARASTRA TUS ARCHIVOS AQUÍ</p>
+        <div  id="dragFileId" className='DragableFile-parent' 
+        style={{boxShadow : isDragOver ?  '0px 0px 31px 29px rgb(106 185 114 / 90%)' : '0px 0px 31px 21px rgb(106 185 114 / 79%)'}}>
+            <input  type={"file"} className="" onChange={getFileToIUnput}></input>
+            {fileDrag ? 
+            <div>
+                <p>ARASTRA OTRO ARCHIVO</p>
+                <p>PARA CAMIBIAR</p>
+                <p>{fileDrag.name}</p>
+            </div>
+            :
+                <p>ARASTRA TUS ARCHIVOS AQUÍ</p>
+        }
+            
         </div>
-        <button className='DragableFile-button'>
+        <button 
+            className='DragableFile-button'
+            style={{background : isLogged ? '#569B51' : 'rgba(86, 155, 81, 0.7)'}}
+        >
             <p>Subir archivos</p>
         </button>
     </div>
