@@ -10,7 +10,6 @@ import './App.css';
 
 //components
 import Home from "../src/pages/home/Home"
-import GoogleLogin from '../src/pages/googleLogin/GoogleLogin';
 
 //context
 import { UserContextProvider } from './context/userGoogleContext';
